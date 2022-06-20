@@ -1,12 +1,9 @@
-## Welcome to GitHub Pages
+##              Pranav Vempati
 
-You can use the [editor on GitHub](https://github.com/pranav-vempati/pranav-vempati.github.io/edit/main/index.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
 ### Markdown
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+This site will host personal projects, mathematical curiosities, blogs, and SCAI-relevant content. 
 
 ```markdown
 Syntax highlighted code block
