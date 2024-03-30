@@ -1,9 +1,14 @@
-##              Pranav Vempati
+---
+layout: default
+---
 
+# Pranav Vempati's Personal Website
 
 ### General Information
 
-This site will host personal projects, mathematical curiosities, blogs, and SCAI-relevant content. 
+Welciome to my corner of the internet! This site contains projects and information about myself. 
 
-[!image](pranav-image-removebg-preview (2).jpg)
+![Pranav's Profile Image](pranav-image-removebg-preview (2).jpg)
 
+- [Projects](/projects)
+- [CV](/cv)
