@@ -1,1 +1,36 @@
- remote_theme: "daviddarnes/alembic"
+remote_theme: daviddarnes/alembic
+
+# Site settings
+title: Pranav Vempati's Personal Website
+email: pranav.k.vempati@gmail.com
+description: > 
+  Welcome to my corner of the internet! This site contains information about myself.
+
+username: pranav-vempati
+
+markdown: kramdown
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Front Matter defaults
+defaults:
+  # _pages
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: page
+
+# Enable excerpts on homepage
+show_excerpts: true 
+
+# Color scheme and header settings
+color_scheme: dark 
+header:
+  overlay_color: "#333" 
+  overlay_filter: "0.5" 
+
+
+# Accent color for links and buttons
+accent_color: "blue"

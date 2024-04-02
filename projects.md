@@ -4,4 +4,4 @@ layout: default
 
 # Projects
 
-Content for projects goes here.
+1) Machine Learning Phases of Matter: Co-authored with Giridhar Vadhul. 
