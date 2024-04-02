@@ -21,3 +21,10 @@ Welcome to my corner of the internet! This site contains projects and informatio
 ## About Me
 
 I am a software engineer whose interest lies at the confluence of machine learning and software engineering. My background includes a position as a data scientist at LLNL, multiple internships, research experience, relevant coursework, and organizational leadership experience as the President of Santa Cruz Artificial Intelligence. Please browse my LinkedIn profile, GitHub profile, and Stack Overflow profile to learn more.
+
+
+## Skills
+
+- **Programming Languages:** Python, C++, C, TypeScript, Swift
+- **Frameworks and Libraries:** TensorFlow, PyTorch, Keras, JAX, CUDA, Scikit-Learn
+- **Tools and Platforms:** Git, Docker, Linux
