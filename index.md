@@ -15,7 +15,6 @@ This site showcases my experience, projects, research, and further information a
 ## Navigation
 
 - [Projects](/projects)
-- [Research](/research) 
 - [CV](/cv)
 - [GitHub](https://github.com/pranav-vempati)
 - [LinkedIn](https://www.linkedin.com/in/pranav-vempati) 
