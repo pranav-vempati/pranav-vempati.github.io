@@ -3,8 +3,6 @@ layout: page
 title: Projects
 ---
 
-# Projects
-
 Here's a highlight of some of my projects:
 
 ## Machine Learning Phases of Matter
