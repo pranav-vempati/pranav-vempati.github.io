@@ -8,11 +8,14 @@ feature_image: "path/to/feature-image.jpg"
   <img src="pranav-image-removebg-preview (2).jpg" alt="Profile Image" style="width: 150px; border-radius: 50%; margin-bottom: 20px;"/>
 </div>
 
+<link rel="stylesheet" href="{{ '/assets/css/style.scss' | relative_url }}">
+
+
+
 # Welcome to my corner of the internet!
 
 This site showcases my experience, projects, research, and further information about myself.
 
-## Navigation
 
 - [Projects](/projects)
 - [CV](/cv)

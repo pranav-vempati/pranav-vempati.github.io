@@ -5,7 +5,7 @@ title: Research Experience
 
 # Research
 
-Research interests: 
+Research projects, past and current:
 
 1) Computer Vision and OCR for enhancing spatial awareness for visually impaired users(undergraduate)
 
