@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pranav Vempati — Software Engineer</title>
+<meta name="description" content="Pranav Vempati — Software Development Engineer at AWS. Deep learning, HPC, and distributed systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Space+Mono:wght@400;700&family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #07090d;
+    --bg-2: #0c1118;
+    --panel: rgba(255,255,255,0.025);
+    --border: rgba(140,170,210,0.10);
+    --border-bright: rgba(140,170,210,0.22);
+    --ink: #e8edf4;
+    --ink-dim: #9aa7b8;
+    --ink-faint: #5f6b7c;
+    --accent: #6fb4d8;
+    --accent-warm: #d8956f;
+    --aurora-1: #2bd9a3;
+    --aurora-2: #3a7bd5;
+    --display: 'Fraunces', Georgia, serif;
+    --body: 'Sora', system-ui, sans-serif;
+    --mono: 'Space Mono', monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--body);
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Atmospheric background layers */
+  .atmos {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background:
+      radial-gradient(ellipse 120% 80% at 50% -10%, rgba(43,217,163,0.10), transparent 55%),
+      radial-gradient(ellipse 90% 60% at 80% 5%, rgba(58,123,213,0.12), transparent 50%),
+      radial-gradient(ellipse 100% 70% at 15% 10%, rgba(111,180,216,0.06), transparent 45%),
+      linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 40%, var(--bg) 100%);
+  }
+  .grain {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    opacity: 0.04;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 28px; }
+
+  /* ---- Hero ---- */
+  header.hero {
+    min-height: 92vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+  }
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.6rem;
+    opacity: 0;
+    animation: rise 0.9s ease forwards 0.1s;
+  }
+  h1 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(2.8rem, 8vw, 5.6rem);
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.8rem;
+  }
+  h1 .line { display: block; overflow: hidden; }
+  h1 .line span {
+    display: block;
+    transform: translateY(105%);
+    animation: reveal 1s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  h1 .line:nth-child(1) span { animation-delay: 0.2s; }
+  h1 .line:nth-child(2) span { animation-delay: 0.34s; }
+  h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .lede {
+    max-width: 600px;
+    font-size: clamp(1.05rem, 2.2vw, 1.3rem);
+    color: var(--ink-dim);
+    font-weight: 300;
+    opacity: 0;
+    animation: rise 0.9s ease forwards 0.7s;
+  }
+  .lede strong { color: var(--ink); font-weight: 500; }
+  .hero-meta {
+    margin-top: 2.6rem;
+    display: flex;
+    gap: 1.6rem;
+    flex-wrap: wrap;
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--ink-faint);
+    opacity: 0;
+    animation: rise 0.9s ease forwards 0.95s;
+  }
+  .hero-meta a { color: var(--ink-dim); text-decoration: none; transition: color 0.25s; }
+  .hero-meta a:hover { color: var(--accent); }
+  .scroll-cue {
+    position: absolute;
+    bottom: 2.4rem;
+    left: 28px;
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    opacity: 0;
+    animation: rise 0.9s ease forwards 1.3s, bob 2.4s ease-in-out infinite 2s;
+  }
+
+  /* ---- Sections ---- */
+  section { padding: 6rem 0; position: relative; }
+  .section-label {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 2.6rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--border-bright), transparent);
+  }
+  h2 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    letter-spacing: -0.01em;
+    margin-bottom: 1.4rem;
+    line-height: 1.1;
+  }
+  .prose p { color: var(--ink-dim); max-width: 680px; margin-bottom: 1.2rem; font-size: 1.05rem; }
+  .prose strong { color: var(--ink); font-weight: 500; }
+
+  /* ---- Experience timeline ---- */
+  .timeline { display: flex; flex-direction: column; gap: 0; }
+  .role {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 2rem;
+    padding: 2rem 0;
+    border-top: 1px solid var(--border);
+    transition: border-color 0.4s;
+  }
+  .role:hover { border-top-color: var(--border-bright); }
+  .role:last-child { border-bottom: 1px solid var(--border); }
+  .role .when {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--ink-faint);
+    padding-top: 0.4rem;
+  }
+  .role h3 {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 1.35rem;
+    margin-bottom: 0.25rem;
+  }
+  .role .org {
+    color: var(--accent);
+    font-size: 0.92rem;
+    margin-bottom: 0.9rem;
+    font-weight: 400;
+  }
+  .role ul { list-style: none; }
+  .role li {
+    color: var(--ink-dim);
+    font-size: 0.97rem;
+    padding-left: 1.3rem;
+    position: relative;
+    margin-bottom: 0.55rem;
+    max-width: 640px;
+  }
+  .role li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0.65em;
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+    opacity: 0.55;
+  }
+  .role li b { color: var(--ink); font-weight: 500; }
+
+  /* ---- Skills ---- */
+  .skill-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+  .skill-cell {
+    background: var(--bg);
+    padding: 1.6rem 1.5rem;
+    transition: background 0.35s;
+  }
+  .skill-cell:hover { background: var(--bg-2); }
+  .skill-cell h4 {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.9rem;
+    font-weight: 700;
+  }
+  .tags { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+  .tag {
+    font-size: 0.8rem;
+    color: var(--ink-dim);
+    padding: 0.22rem 0.6rem;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    transition: all 0.25s;
+  }
+  .tag:hover { color: var(--ink); border-color: var(--border-bright); }
+
+  /* ---- Education ---- */
+  .edu-card {
+    border: 1px solid var(--border);
+    padding: 2rem;
+    margin-bottom: 1.2rem;
+    transition: border-color 0.4s;
+  }
+  .edu-card:hover { border-color: var(--border-bright); }
+  .edu-card .when { font-family: var(--mono); font-size: 0.76rem; color: var(--ink-faint); }
+  .edu-card h3 { font-family: var(--display); font-weight: 500; font-size: 1.3rem; margin: 0.3rem 0; }
+  .edu-card .gpa { color: var(--accent); font-family: var(--mono); font-size: 0.82rem; }
+  .edu-card p { color: var(--ink-dim); font-size: 0.95rem; margin-top: 0.8rem; max-width: 640px; }
+
+  /* ---- Personal coda ---- */
+  .coda { border-top: 1px solid var(--border); }
+  .coda .prose p { font-size: 1.08rem; }
+
+  /* ---- Footer ---- */
+  footer {
+    padding: 4rem 0 5rem;
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+  .footer-links { display: flex; gap: 1.8rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1.6rem; }
+  .footer-links a {
+    color: var(--ink-dim);
+    text-decoration: none;
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    letter-spacing: 0.05em;
+    transition: color 0.25s;
+    position: relative;
+  }
+  .footer-links a::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: -3px;
+    width: 0; height: 1px;
+    background: var(--accent);
+    transition: width 0.3s;
+  }
+  .footer-links a:hover { color: var(--accent); }
+  .footer-links a:hover::after { width: 100%; }
+  footer .fine { font-family: var(--mono); font-size: 0.72rem; color: var(--ink-faint); }
+
+  /* ---- Reveal on scroll ---- */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.16,1,0.3,1); }
+  .reveal.in { opacity: 1; transform: none; }
+
+  @keyframes reveal { to { transform: translateY(0); } }
+  @keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+  @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+
+  @media (max-width: 640px) {
+    .role { grid-template-columns: 1fr; gap: 0.5rem; }
+    .role .when { padding-top: 0; }
+    .scroll-cue { display: none; }
+    section { padding: 4.5rem 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    h1 .line span { transform: none; }
+    .eyebrow, .lede, .hero-meta, .scroll-cue { opacity: 1; }
+    .reveal { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+<div class="atmos"></div>
+<div class="grain"></div>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Software Engineer · Seattle, WA</p>
+    <h1>
+      <span class="line"><span>Pranav Vempati</span></span>
+      <span class="line"><span><em>Software Engineer</em></span></span>
+    </h1>
+    <p class="lede">Software Development Engineer at <strong>AWS</strong> on Just Walk Out technology, with a Master's in Computer Science and a foundation in <strong>deep learning research</strong> and <strong>high-performance computing</strong>.</p>
+    <div class="hero-meta">
+      <a href="mailto:pranav.k.vempati@gmail.com">pranav.k.vempati@gmail.com</a>
+      <span>(408) 507-3418</span>
+      <span>Seattle, Washington</span>
+    </div>
+  </div>
+  <span class="scroll-cue">Scroll ↓</span>
+</header>
+
+<main>
+  <section id="about">
+    <div class="wrap reveal">
+      <p class="section-label">About</p>
+      <h2>Engineering across the full stack of intelligence.</h2>
+      <div class="prose">
+        <p>I work at the intersection of <strong>distributed systems</strong> and <strong>machine learning</strong>. At AWS, I help power the backend systems behind Just Walk Out's autonomous checkout — routing transaction data from computer vision pipelines and building the observability infrastructure that keeps mission-critical services healthy.</p>
+        <p>Before AWS, my path ran through generative modeling research at <strong>Lawrence Livermore National Laboratory</strong>, applied ML engineering, and academic computer vision work. I previously served as President of <strong>Santa Cruz Artificial Intelligence</strong>, a 150+ member ML organization at UC Santa Cruz. I'm currently open to new opportunities in distributed systems, backend infrastructure, and applied machine learning.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="wrap reveal">
+      <p class="section-label">Experience</p>
+      <div class="timeline">
+
+        <article class="role">
+          <div class="when">03/2025 — Present</div>
+          <div>
+            <h3>Software Development Engineer — Just Walk Out</h3>
+            <div class="org">Amazon (AWS) · Seattle, WA</div>
+            <ul>
+              <li>Contributed to backend systems enabling <b>autonomous checkout</b> experiences by processing and routing transaction data from computer vision pipelines.</li>
+              <li>Designed and implemented monitoring and alerting infrastructure using <b>AWS CloudWatch and EventBridge</b> to improve observability for mission-critical production services.</li>
+              <li>Reduced latency in distributed transaction routing by optimizing retry mechanisms and queue management for production workflows.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="role">
+          <div class="when">06/2024 — 03/2025</div>
+          <div>
+            <h3>Machine Learning Engineer</h3>
+            <div class="org">CoreData AI · Remote</div>
+            <ul>
+              <li>Engineered and deployed AI chatbots and backend models enabling customers to derive actionable insights from their data — improving time-to-decision by <b>60%</b> and engagement by <b>40%</b>.</li>
+              <li>Built the backend in Python on <b>AWS Lambda</b>, exposing scalable endpoints via API Gateway for low-latency, serverless inference.</li>
+              <li>Developed domain-specific prompt engineering and response templates (task decomposition, structured outputs, guardrails), improving relevance and consistency while reducing hallucinations.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="role">
+          <div class="when">08/2022 — 01/2023</div>
+          <div>
+            <h3>Data Scientist</h3>
+            <div class="org">Lawrence Livermore National Laboratory · Livermore, CA</div>
+            <ul>
+              <li>Implemented <b>Continuous Conditional GANs (CcGANs)</b> in PyTorch as a learned surrogate for spatial laser energy deposition during 3D metal printing — replacing classical melt-pool simulations requiring HPC-scale compute.</li>
+              <li>Modified the CcGAN loss function to incorporate physical constraints and built custom dataset augmentation pipelines, achieving <b>93% fidelity</b> to ground-truth physical experiments.</li>
+              <li>Contributed to <b>libROM</b>, a C++ Reduced Order Modeling library — authoring a regression test suite, enhancing the CI workflow with GitHub Actions, and incorporating FEM-based simulations.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="role">
+          <div class="when">09/2021 — 08/2022</div>
+          <div>
+            <h3>President — Santa Cruz Artificial Intelligence</h3>
+            <div class="org">UC Santa Cruz, Baskin School of Engineering · Santa Cruz, CA</div>
+            <ul>
+              <li>Led a Baskin Engineering–affiliated organization of over <b>150 members</b>.</li>
+              <li>Prepared and delivered lessons, and mentored members through their projects. (Lecturer, 2018–2022.)</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="role">
+          <div class="when">06/2021 — 06/2022</div>
+          <div>
+            <h3>Researcher — Computer Vision Lab</h3>
+            <div class="org">UC Santa Cruz · Santa Cruz, CA</div>
+            <ul>
+              <li>Worked with Professor Roberto Manduchi to maintain and benchmark an iOS Swift-based <b>OCR application for the visually impaired</b>, integrating Google ML Kit features.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="role">
+          <div class="when">06/2020 — 09/2020</div>
+          <div>
+            <h3>Software Engineering Intern — End User Computing</h3>
+            <div class="org">VMware · Palo Alto, CA</div>
+            <ul>
+              <li>Built an Angular-based project enhancing the renovated Workspace ONE administration console, adding functionality to the Identity Management UI in Angular 8 and Clarity.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="role">
+          <div class="when">08/2019 — 09/2019</div>
+          <div>
+            <h3>Embedded Systems & Deep Learning Intern</h3>
+            <div class="org">ICURO · Santa Clara, CA</div>
+            <ul>
+              <li>Delivered a Python OCR-based license-plate recognition system using TensorFlow Lite MobileNet and Darknet YOLOv3, reaching <b>96% accuracy</b> on a custom dataset.</li>
+              <li>Shipped 8-bit quantized models for offline on-device inference on Edge TPU / Mendel Linux, achieving a <b>10× reduction</b> in model size.</li>
+            </ul>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap reveal">
+      <p class="section-label">Toolkit</p>
+      <h2>What I build with.</h2>
+      <div class="skill-grid">
+        <div class="skill-cell">
+          <h4>Languages</h4>
+          <div class="tags">
+            <span class="tag">C++</span><span class="tag">Python</span><span class="tag">C</span><span class="tag">Java</span><span class="tag">TypeScript</span><span class="tag">JavaScript</span><span class="tag">Kotlin</span><span class="tag">Swift</span><span class="tag">SQL</span><span class="tag">Bash</span>
+          </div>
+        </div>
+        <div class="skill-cell">
+          <h4>ML & AI</h4>
+          <div class="tags">
+            <span class="tag">PyTorch</span><span class="tag">TensorFlow</span><span class="tag">Keras</span><span class="tag">Computer Vision</span><span class="tag">LLMs</span><span class="tag">Transformers</span><span class="tag">Generative AI</span><span class="tag">NLP</span><span class="tag">Reinforcement Learning</span>
+          </div>
+        </div>
+        <div class="skill-cell">
+          <h4>Systems & Infra</h4>
+          <div class="tags">
+            <span class="tag">AWS</span><span class="tag">Lambda</span><span class="tag">DynamoDB</span><span class="tag">CloudWatch</span><span class="tag">Docker</span><span class="tag">Kubernetes</span><span class="tag">CUDA</span><span class="tag">SLURM</span><span class="tag">Distributed Systems</span><span class="tag">CI/CD</span>
+          </div>
+        </div>
+        <div class="skill-cell">
+          <h4>Libraries & Data</h4>
+          <div class="tags">
+            <span class="tag">NumPy</span><span class="tag">Pandas</span><span class="tag">SciPy</span><span class="tag">Scikit-Learn</span><span class="tag">OpenCV</span><span class="tag">ONNX</span><span class="tag">Plotly</span><span class="tag">Matplotlib</span><span class="tag">CMake</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="wrap reveal">
+      <p class="section-label">Education</p>
+      <h2>Foundations.</h2>
+      <div class="edu-card">
+        <div class="when">01/2023 — 06/2024</div>
+        <h3>M.S. in Computer Science <span class="gpa">— GPA 3.82 / 4.00</span></h3>
+        <div class="org" style="color:var(--accent);font-size:0.92rem;">University of California, Santa Cruz</div>
+        <p><strong>MS Project:</strong> Evaluating the effectiveness of fairness techniques for decision-tree classifiers. Benchmarked five interventions — including rule-based pruning, Shapley-importance pruning, and direct modification of scikit-learn's Cython decision-tree training to penalize imbalanced splits — reducing false-positive-rate divergence on the maximally divergent subgroup by <strong>7.82%</strong> with no degradation in accuracy or ROC AUC.</p>
+      </div>
+      <div class="edu-card">
+        <div class="when">09/2018 — 12/2021</div>
+        <h3>B.S. in Computer Science <span class="gpa">— GPA 3.46 / 4.00</span></h3>
+        <div class="org" style="color:var(--accent);font-size:0.92rem;">University of California, Santa Cruz</div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-links">
+      <a href="mailto:pranav.k.vempati@gmail.com">Email</a>
+      <a href="https://github.com/pranav-vempati" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/pranav-vempati" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://stackoverflow.com/users/5025377/pranav-vempati" target="_blank" rel="noopener">Stack Overflow</a>
+    </div>
+    <p class="fine">© 2026 Pranav Vempati · Built and hosted on GitHub Pages</p>
+  </div>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
